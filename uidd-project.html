@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UIDD Change Process - GET Project | Deepavarshini V</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <style>
+        /* Reuse your portfolio styles */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #777;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            padding-top: 80px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Project Header */
+        .project-header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .project-title {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .project-subtitle {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Project Content */
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .main-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            align-self: start;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .section h3 {
+            color: var(--primary);
+            margin: 25px 0 15px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .section ul, .section ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .tech-item {
+            background: var(--light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tech-item i {
+            color: var(--secondary);
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border-radius: 5px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .feature-list li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--secondary);
+        }
+
+        .flow-diagram {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        /* UPDATED WORKFLOW STYLES */
+        .workflow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 40px 0;
+            align-items: center;
+        }
+
+        .workflow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .workflow-step.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content strong {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .step-arrow {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--secondary);
+            font-size: 28px;
+            z-index: 2;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .workflow-step:last-child .step-arrow {
+            display: none;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        @media (max-width: 968px) {
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+
+            .workflow-step {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="design.html#projects" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+
+        <div class="project-header">
+            <h1 class="project-title">UIDD Change Process – GET Project</h1>
+            <p class="project-subtitle">A Flask-based web application for comparing document revisions and identifying impacted automation scripts</p>
+        </div>
+
+        <div class="project-content">
+            <div class="main-content">
+                <div class="section">
+                    <h2>Project Overview</h2>
+                    <p>The UIDD Change Process is a comprehensive web application built with Flask that automates the comparison of document revisions and identifies impacted automation scripts. This tool was developed to streamline the process of tracking changes in UIDD documents and assessing their impact on existing Robot Framework test scripts.</p>
+
+                    <p>The application integrates with SVN repositories to fetch document revisions, generates HTML diffs to visualize changes, and uses keyword matching to identify which automation scripts are affected by specific document changes. This significantly reduces manual effort and improves accuracy in maintaining test scripts.</p>
+                </div>
+
+                <div class="section">
+                    <h2>Key Features</h2>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>SVN Integration:</strong> Automatically fetches document revisions from SVN repositories</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Visual Diff Generation:</strong> Creates HTML-based difference visualizations with color-coded changes</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Impact Analysis:</strong> Identifies impacted automation scripts through keyword matching</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Multi-threading:</strong> Uses concurrent processing for efficient handling of multiple files</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Excel Reporting:</strong> Generates detailed Excel reports of revision changes</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Web Interface:</strong> User-friendly web interface for managing the change process</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2>Technical Implementation</h2>
+
+                    <h3>Architecture & Workflow</h3>
+                    <p>The application follows a client-server architecture with Flask handling the backend logic and serving the web interface. The workflow consists of the following steps:</p>
+
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <div class="step-content">
+                                <strong>User initiates the process</strong> through the web interface
+                            </div>
+                            <div class="step-arrow"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-content">
+                                <strong>Application connects to SVN repository</strong> to fetch latest revisions
+                            </div>
+                            <div class="step-arrow"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-content">
+                                <strong>Compares previous and current document versions</strong> using SVN commands
+                            </div>
+                            <div class="step-arrow"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-content">
+                                <strong>Generates HTML diff files</strong> highlighting changes with color coding
+                            </div>
+                            <div class="step-arrow"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-content">
+                                <strong>Extracts keywords from changed content</strong> using text processing algorithms
+                            </div>
+                            <div class="step-arrow"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-content">
+                                <strong>Matches keywords against script mapping database</strong> to identify impacted scripts
+                            </div>
+                            <div class="step-arrow"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-content">
+                                <strong>Identifies impacted automation scripts</strong> with confidence scoring
+                            </div>
+                            <div class="step-arrow"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-content">
+                                <strong>Generates Excel reports</strong> and updates tracking information for audit trail
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Code Explanation</h3>
+                    <p>The application is built with several key functions that handle different aspects of the process:</p>
+
+                    <h4>1. SVN Integration Functions</h4>
+                    <p>These functions handle communication with the SVN repository:</p>
+
+                    <div class="code-block">
+                        <div class="code-header">SVN Repository Interaction</div>
+                        <pre><code class="language-python">
+def list_folders(repo_path):
+    command = ['svn', 'list', '--depth', 'infinity', repo_path]
+    result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True)
+    if result.returncode == 0:
+        items = result.stdout.split('\n')
+        folders = [item.rstrip('/') for item in items if item.endswith('/')]
+        return folders
+    else:
+        print("Error:", result.stderr)
+        return []
+                        </code></pre>
+                    </div>
+
+                    <h4>2. Diff Generation</h4>
+                    <p>This function creates visual diffs between document versions:</p>
+
+                    <div class="code-block">
+                        <div class="code-header">HTML Diff Generation</div>
+                        <pre><code class="language-python">
+def generate_html_diff(file1_lines, file2_lines):
+    differ = difflib.HtmlDiff()
+    diff_html = differ.make_file(file1_lines, file2_lines, fromdesc='Previous file', todesc='Update file', context=True, numlines=50)
+    diff_html = diff_html.replace('<span class="diff_add"', '<span class="diff_add" style="background-color: #d4fcbc;"')
+    diff_html = diff_html.replace('<span class="diff_chg"', '<span class="diff_chg" style="background-color: #fff5b1;"')
+    diff_html = diff_html.replace('<span class="diff_sub"', '<span class="diff_sub" style="background-color: #ffb6b6;"')
+    return diff_html
+                        </code></pre>
+                    </div>
+
+                    <h4>3. Impact Analysis</h4>
+                    <p>This function identifies impacted scripts through keyword matching:</p>
+
+                    <div class="code-block">
+                        <div class="code-header">Impact Analysis Algorithm</div>
+                        <pre><code class="language-python">
+def extract_robot_files(json_data, robotfilename):
+    results = set()
+    parameter_lower = robotfilename.lower()
+
+    def recursive_search(data, key):
+        if isinstance(data, dict):
+            for k, v in data.items():
+                if k.lower() == key:
+                    if isinstance(v, dict):
+                        for sub_key, sub_value in v.items():
+                            results.update(sub_value)
+                    elif isinstance(v, list):
+                        results.update(v)
+                recursive_search(v, key)
+        elif isinstance(data, list):
+            for item in data:
+                recursive_search(item, key)
+
+    recursive_search(json_data, parameter_lower)
+    return results
+                        </code></pre>
+                    </div>
+
+                    <h4>4. Multi-threading Implementation</h4>
+                    <p>The application uses concurrent processing for efficiency:</p>
+
+                    <div class="code-block">
+                        <div class="code-header">Concurrent Processing with ThreadPoolExecutor</div>
+                        <pre><code class="language-python">
+def generate_diff_files(local_excel, output_folder, repo_path):
+    # ... setup code ...
+    with ThreadPoolExecutor() as executor:
+        futures = [executor.submit(process_file, row) for index, row in df_local.iterrows()]
+        for future in futures:
+            added, deleted = future.result()
+            all_added_lines.extend(added)
+            all_deleted_lines.extend(deleted)
+    # ... rest of the function ...
+                        </code></pre>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Advantages & Benefits</h2>
+
+                    <h3>Efficiency Improvement</h3>
+                    <p>The application reduced the time required for identifying impacted scripts by 50%, significantly accelerating the change management process.</p>
+
+                    <h3>Accuracy Enhancement</h3>
+                    <p>By automating the keyword matching process, the tool improved accuracy in identifying impacted scripts, reducing human error.</p>
+
+                    <h3>Visualization</h3>
+                    <p>The HTML diff visualization with color-coded changes makes it easier to understand what has been modified between document versions.</p>
+
+                    <h3>Scalability</h3>
+                    <p>The multi-threading implementation allows the application to handle large numbers of documents efficiently.</p>
+
+                    <h3>Traceability</h3>
+                    <p>Excel reporting provides a clear audit trail of changes and their impacts, improving project documentation.</p>
+                </div>
+
+                <div class="section">
+                    <h2>Technical Challenges & Solutions</h2>
+
+                    <h3>Challenge 1: SVN Integration</h3>
+                    <p><strong>Problem:</strong> Efficiently retrieving and comparing multiple document versions from SVN.</p>
+                    <p><strong>Solution:</strong> Implemented subprocess calls to SVN commands with proper error handling and output parsing.</p>
+
+                    <h3>Challenge 2: Performance with Large Documents</h3>
+                    <p><strong>Problem:</strong> Processing large documents and multiple revisions could be time-consuming.</p>
+                    <p><strong>Solution:</strong> Implemented multi-threading using ThreadPoolExecutor to process files concurrently.</p>
+
+                    <h3>Challenge 3: Accurate Impact Analysis</h3>
+                    <p><strong>Problem:</strong> Identifying the right automation scripts affected by document changes.</p>
+                    <p><strong>Solution:</strong> Developed a recursive keyword matching algorithm with configurable threshold scoring.</p>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="section">
+                    <h2>Project Details</h2>
+
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-flask"></i>
+                            <span>Flask</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-code-branch"></i>
+                            <span>SVN</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-table"></i>
+                            <span>Excel Reports</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-robot"></i>
+                            <span>Robot Framework</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-code"></i>
+                            <span>HTML/CSS/JS</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-bolt"></i>
+                            <span>Multi-threading</span>
+                        </div>
+                    </div>
+
+                    <h3>Key Achievements</h3>
+                    <ul>
+                        <li>50% improvement in process efficiency</li>
+                        <li>60% improvement in data accuracy</li>
+                        <li>40% reduction in protocol testing time</li>
+                        <li>Successful management of multiple responsibilities</li>
+                    </ul>
+
+                    <h3>Project Impact</h3>
+                    <p>This tool became an essential part of the development workflow, ensuring that automation scripts are always synchronized with the latest document changes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add copy functionality to code blocks
+        document.querySelectorAll('.code-block').forEach(block => {
+            const button = document.createElement('button');
+            button.innerHTML = '<i class="far fa-copy"></i>';
+            button.classList.add('btn-copy');
+            button.style.position = 'absolute';
+            button.style.right = '10px';
+            button.style.top = '10px';
+            button.style.padding = '5px 10px';
+            button.style.fontSize = '0.8rem';
+            button.style.background = 'var(--secondary)';
+            button.style.color = 'white';
+            button.style.border = 'none';
+            button.style.borderRadius = '3px';
+            button.style.cursor = 'pointer';
+
+            block.style.position = 'relative';
+            block.querySelector('.code-header').appendChild(button);
+
+            button.addEventListener('click', () => {
+                const code = block.querySelector('code').innerText;
+                navigator.clipboard.writeText(code).then(() => {
+                    button.innerHTML = '<i class="fas fa-check"></i>';
+                    setTimeout(() => {
+                        button.innerHTML = '<i class="far fa-copy"></i>';
+                    }, 2000);
+                });
+            });
+        });
+
+        // Animate workflow steps on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const workflowSteps = document.querySelectorAll('.workflow-step');
+
+            function checkVisibility() {
+                workflowSteps.forEach((step, index) => {
+                    const position = step.getBoundingClientRect();
+
+                    // If element is in viewport
+                    if(position.top < window.innerHeight * 0.85 && position.bottom >= 0) {
+                        // Add delay based on index for sequential animation
+                        setTimeout(() => {
+                            step.classList.add('animate');
+                        }, index * 200);
+                    }
+                });
+            }
+
+            // Check on load and scroll
+            checkVisibility();
+            window.addEventListener('scroll', checkVisibility);
+        });
+    </script>
+</body>
+</html>

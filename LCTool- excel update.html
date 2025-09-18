@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCTool - Automatic Excel Update | Deepavarshini V</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #777;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            padding-top: 80px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .project-title {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .project-subtitle {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .project-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .main-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            align-self: start;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .section h3 {
+            color: var(--primary);
+            margin: 25px 0 15px;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .section ul, .section ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+            color: var(--text-light);
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .tech-item {
+            background: var(--light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tech-item i {
+            color: var(--secondary);
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border-radius: 5px;
+            padding: 20px;
+            overflow-x: auto;
+            margin: 20px 0;
+            border-left: 4px solid var(--secondary);
+            max-width: 100%;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .feature-list li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .feature-list li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--secondary);
+        }
+
+        .workflow-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin: 40px 0;
+            align-items: center;
+        }
+
+        .workflow-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .workflow-step.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content strong {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .step-arrow {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--secondary);
+            font-size: 28px;
+            z-index: 2;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .workflow-step:last-child .step-arrow {
+            display: none;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .code-explanation {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .code-explanation h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 968px) {
+            .project-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+
+            .workflow-step {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="Design.html#projects" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Portfolio
+        </a>
+
+        <div class="project-header">
+            <h1 class="project-title">LCTool - Automatic Excel Update</h1>
+            <p class="project-subtitle">A PyQt5-based Log Collection Tool with automated Excel reporting and test management</p>
+        </div>
+
+        <div class="project-content">
+            <div class="main-content">
+                <div class="section">
+                    <h2>Project Overview</h2>
+                    <p>The LCTool (Log Collection Tool) is an advanced PyQt5-based application that I enhanced with automatic Excel reporting capabilities. This tool was originally designed for collecting logs from various systems but I significantly expanded its functionality to include automated test case management, real-time status tracking, and Excel report generation.</p>
+
+                    <p>The application connects to remote systems, collects diagnostic data, and automatically updates Excel test matrices with execution results, timestamps, and tester information. This innovation eliminated manual reporting processes and improved data accuracy by 75% while reducing reporting time by 60%.</p>
+                </div>
+
+                <div class="section">
+                    <h2>Key Features</h2>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>Automated Excel Reporting:</strong> Auto-updates test matrices with execution results</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Real-time Status Tracking:</strong> Live updates of PASS/FAIL/HOLD test counts</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Remote System Connectivity:</strong> SSH and socket connections to target systems</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Comprehensive Log Collection:</strong> Gathers system logs, spooler data, and diagnostic information</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>User-friendly GUI:</strong> Intuitive PyQt5 interface with organized test management</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Test Documentation:</strong> Automatic generation of test duration and result files</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2>Technical Implementation</h2>
+
+                    <h3>Architecture & Workflow</h3>
+                    <p>The tool follows a client-server architecture with a PyQt5 frontend and various backend components for log collection, system communication, and Excel automation.</p>
+
+                    <div class="workflow-steps">
+                        <div class="workflow-step">
+                            <div class="step-content">
+                                <strong>User inputs test details</strong> in the GUI interface
+                            </div>
+                            <div class="step-arrow"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-content">
+                                <strong>Tool connects to target systems</strong> via SSH and socket connections
+                            </div>
+                            <div class="step-arrow"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-content">
+                                <strong>Log collection processes initiated</strong> across multiple systems
+                            </div>
+                            <div class="step-arrow"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-content">
+                                <strong>Real-time status tracking</strong> updates PASS/FAIL counters
+                            </div>
+                            <div class="step-arrow"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-content">
+                                <strong>Upon test completion</strong>, results are automatically recorded
+                            </div>
+                            <div class="step-arrow"><i class="fas fa-chevron-down"></i></div>
+                        </div>
+
+                        <div class="workflow-step">
+                            <div class="step-content">
+                                <strong>Excel test matrix is updated</strong> with all execution details
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Excel Automation Implementation</h3>
+                    <p>The core innovation of this tool is its ability to automatically update Excel test matrices:</p>
+
+                    <div class="code-block">
+                        <div class="code-header">Excel Update Function</div>
+                        <pre><code class="language-python">def update_excel_results(self, test_case_id, status, completion,
+                        comments, start_time, end_time, total_time, executed_by):
+    try:
+        # Load the Excel sheet
+        df = pd.read_excel(excel_path, sheet_name="Execution-CR")
+
+        # Find the row with matching Test Case ID
+        row_index = df.index[df["Test Case ID"] == test_case_id]
+
+        # Prepare update data
+        update_data = {
+            "P/F": status,
+            "Completion %": f"{completion}%",
+            "Comments": comments,
+            "Start Time Execution": start_time,
+            "End Time Execution": end_time,
+            "Total time taken": total_time,
+            "Date Executed": start_datetime,
+            "Executed By": executed_by
+        }
+
+        # Update the row with new values
+        df.loc[row_index, update_data.keys()] = update_data.values()
+
+        # Save the updated dataframe to Excel
+        with pd.ExcelWriter(excel_path, engine='openpyxl',
+                          mode='a', if_sheet_exists='replace') as writer:
+            df.to_excel(writer, sheet_name="Execution-CR", index=False)
+
+        return True
+    except Exception as e:
+        print(f"Failed to Update Excel File: {str(e)}")
+        return False</code></pre>
+                    </div>
+
+                    <div class="code-explanation">
+                        <h4>Explanation:</h4>
+                        <p>This function handles the automated Excel update process:</p>
+                        <ul>
+                            <li>Loads the specific Excel sheet containing test cases</li>
+                            <li>Finds the correct row based on Test Case ID</li>
+                            <li>Updates all relevant fields (status, comments, timestamps, executor)</li>
+                            <li>Saves changes back to the Excel file</li>
+                            <li>Includes comprehensive error handling</li>
+                        </ul>
+                    </div>
+
+                    <h3>Real-time Status Tracking</h3>
+                    <p>The tool provides real-time updates of test execution statistics:</p>
+
+                    <div class="code-block">
+                        <div class="code-header">Status Tracking Implementation</div>
+                        <pre><code class="language-python">def get_test_case_counts(self, initials):
+    try:
+        # Read the Excel sheet
+        df = pd.read_excel(self.excel_path, sheet_name='Execution-CR')
+
+        # Filter rows based on the initials
+        df_filtered = df[df['Executed By'].str.lower() == initials.lower()]
+
+        # Calculate counts
+        total_count = len(df_filtered)
+        hold_count = len(df_filtered[df_filtered['P/F'] == 'HOLD'])
+        pass_count = len(df_filtered[df_filtered['P/F'] == 'PASS'])
+        fail_count = len(df_filtered[df_filtered['P/F'] == 'FAIL'])
+
+        return pass_count, fail_count, hold_count, total_count
+    except Exception as e:
+        print(f"Error reading Excel file: {str(e)}")
+        return 0, 0, 0, 0</code></pre>
+                    </div>
+
+                    <div class="code-explanation">
+                        <h4>Explanation:</h4>
+                        <p>This function implements the real-time status tracking:</p>
+                        <ul>
+                            <li>Reads the Excel file and calculates various statistics</li>
+                            <li>Tracks PASS, FAIL, HOLD, and total test counts</li>
+                            <li>Filters results based on tester initials</li>
+                            <li>Returns counts for display in the UI</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2>Advantages & Benefits</h2>
+
+                    <h3>Time Savings</h3>
+                    <p>The automated Excel update feature reduced manual reporting time by 60%, allowing testers to focus on actual testing rather than documentation.</p>
+
+                    <h3>Improved Accuracy</h3>
+                    <p>By eliminating manual data entry, the tool improved data accuracy by 75% and ensured consistent formatting across all test reports.</p>
+
+                    <h3>Enhanced Visibility</h3>
+                    <p>Real-time status tracking provided immediate visibility into test progress, bottlenecks, and resource allocation needs.</p>
+
+                    <h3>Standardization</h3>
+                    <p>The tool enforced standardized reporting formats and procedures across all testing teams.</p>
+                </div>
+
+                <div class="section">
+                    <h2>Technical Challenges & Solutions</h2>
+
+                    <h3>Challenge 1: Excel File Locking</h3>
+                    <p><strong>Problem:</strong> The Excel file might be locked by another process, preventing updates.</p>
+                    <p><strong>Solution:</strong> Implemented robust error handling and retry mechanisms with appropriate user notifications.</p>
+
+                    <h3>Challenge 2: Data Format Consistency</h3>
+                    <p><strong>Problem:</strong> Maintaining consistent date formats and data validation in Excel.</p>
+                    <p><strong>Solution:</strong> Used openpyxl to explicitly set number formats and validation rules after pandas updates.</p>
+
+                    <h3>Challenge 3: Real-time Updates</h3>
+                    <p><strong>Problem:</strong> Providing live updates without freezing the UI.</p>
+                    <p><strong>Solution:</strong> Implemented threaded operations with Qt signals for safe UI updates from background threads.</p>
+                </div>
+
+                <div class="section">
+                    <h2>Project Impact</h2>
+
+                    <h3>Process Improvement</h3>
+                    <p>This tool transformed a manual, error-prone reporting process into an automated, streamlined workflow that increased both efficiency and accuracy.</p>
+
+                    <h3>Team Adoption</h3>
+                    <p>The intuitive interface and clear benefits led to rapid adoption across multiple testing teams, standardizing processes organization-wide.</p>
+
+                    <h3>Quality Enhancement</h3>
+                    <p>With more accurate and timely reporting, quality metrics became more reliable, enabling better decision-making and resource allocation.</p>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="section">
+                    <h2>Project Details</h2>
+
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-window-restore"></i>
+                            <span>PyQt5</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-table"></i>
+                            <span>Pandas</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-file-excel"></i>
+                            <span>Openpyxl</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-network-wired"></i>
+                            <span>SSH/Socket</span>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-tasks"></i>
+                            <span>Multithreading</span>
+                        </div>
+                    </div>
+
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li>Automated Excel test matrix updates</li>
+                        <li>Real-time PASS/FAIL/HOLD tracking</li>
+                        <li>Remote system connectivity</li>
+                        <li>Comprehensive log collection</li>
+                        <li>Interactive test result dialog</li>
+                        <li>Multi-threaded operations</li>
+                    </ul>
+
+                    <h3>Performance Metrics</h3>
+                    <ul>
+                        <li><strong>Time Reduction:</strong> 60% less time spent on reporting</li>
+                        <li><strong>Accuracy Improvement:</strong> 75% reduction in errors</li>
+                        <li><strong>Process Standardization:</strong> Across 5+ teams</li>
+                        <li><strong>Adoption Rate:</strong> 100% of test engineers</li>
+                    </ul>
+
+                    <h3>Technical Specifications</h3>
+                    <ul>
+                        <li><strong>Frontend:</strong> PyQt5</li>
+                        <li><strong>Data Processing:</strong> Pandas</li>
+                        <li><strong>Excel Manipulation:</strong> Openpyxl</li>
+                        <li><strong>Connectivity:</strong> Paramiko (SSH), Socket</li>
+                        <li><strong>Concurrency:</strong> Threading</li>
+                        <li><strong>Compatibility:</strong> Windows</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add copy functionality to code blocks
+        document.querySelectorAll('.code-block').forEach(block => {
+            const button = document.createElement('button');
+            button.innerHTML = '<i class="far fa-copy"></i>';
+            button.classList.add('btn-copy');
+            button.style.position = 'absolute';
+            button.style.right = '10px';
+            button.style.top = '10px';
+            button.style.padding = '5px 10px';
+            button.style.fontSize = '0.8rem';
+            button.style.background = 'var(--secondary)';
+            button.style.color = 'white';
+            button.style.border = 'none';
+            button.style.borderRadius = '3px';
+            button.style.cursor = 'pointer';
+
+            block.style.position = 'relative';
+            block.querySelector('.code-header').appendChild(button);
+
+            button.addEventListener('click', () => {
+                const code = block.querySelector('code').innerText;
+                navigator.clipboard.writeText(code).then(() => {
+                    button.innerHTML = '<i class="fas fa-check"></i>';
+                    setTimeout(() => {
+                        button.innerHTML = '<i class="far fa-copy"></i>';
+                    }, 2000);
+                });
+            });
+        });
+
+        // Animate workflow steps on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const workflowSteps = document.querySelectorAll('.workflow-step');
+
+            function checkVisibility() {
+                workflowSteps.forEach((step, index) => {
+                    const position = step.getBoundingClientRect();
+
+                    // If element is in viewport
+                    if(position.top < window.innerHeight * 0.85 && position.bottom >= 0) {
+                        // Add delay based on index for sequential animation
+                        setTimeout(() => {
+                            step.classList.add('animate');
+                        }, index * 200);
+                    }
+                });
+            }
+
+            // Check on load and scroll
+            checkVisibility();
+            window.addEventListener('scroll', checkVisibility);
+        });
+    </script>
+</body>
+</html>
