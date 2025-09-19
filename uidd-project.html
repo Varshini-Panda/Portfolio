@@ -497,22 +497,6 @@ def generate_diff_files(local_excel, output_folder, repo_path):
                     <h3>Traceability</h3>
                     <p>Excel reporting provides a clear audit trail of changes and their impacts, improving project documentation.</p>
                 </div>
-
-                <div class="section">
-                    <h2>Technical Challenges & Solutions</h2>
-
-                    <h3>Challenge 1: SVN Integration</h3>
-                    <p><strong>Problem:</strong> Efficiently retrieving and comparing multiple document versions from SVN.</p>
-                    <p><strong>Solution:</strong> Implemented subprocess calls to SVN commands with proper error handling and output parsing.</p>
-
-                    <h3>Challenge 2: Performance with Large Documents</h3>
-                    <p><strong>Problem:</strong> Processing large documents and multiple revisions could be time-consuming.</p>
-                    <p><strong>Solution:</strong> Implemented multi-threading using ThreadPoolExecutor to process files concurrently.</p>
-
-                    <h3>Challenge 3: Accurate Impact Analysis</h3>
-                    <p><strong>Problem:</strong> Identifying the right automation scripts affected by document changes.</p>
-                    <p><strong>Solution:</strong> Developed a recursive keyword matching algorithm with configurable threshold scoring.</p>
-                </div>
             </div>
 
             <div class="sidebar">
@@ -621,3 +605,4 @@ def generate_diff_files(local_excel, output_folder, repo_path):
     </script>
 </body>
 </html>
+
