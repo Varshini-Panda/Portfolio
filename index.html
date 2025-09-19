@@ -1171,12 +1171,12 @@
             e.preventDefault();
 
             // Try to download from a relative path first
-            const resumeUrl = 'resume/Deepavarshini_Resume.pdf';
+            const resumeUrl = 'Deepavarshini_V.pdf';
 
             // Create a temporary anchor element to trigger download
             const link = document.createElement('a');
             link.href = resumeUrl;
-            link.download = 'Deepavarshini_V_Resume.pdf';
+            link.download = 'Deepavarshini_V.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -1196,6 +1196,7 @@
 </body>
 
 </html>
+
 
 
 
